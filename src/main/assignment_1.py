@@ -1,4 +1,5 @@
 import numpy as np
+from decimal import Decimal
                  #
 
 val = "010000000111111010111001"
@@ -31,33 +32,34 @@ q1_power = q1_exponent - double_bias
 q1_result = pow(-1, q1_sign) * pow(2, q1_power) * (1 + q1_fraction)
 # question 1
 
-print("{0:.5f}".format(q1_result))
+print("{0:.4f}".format(q1_result))
 print()
 
 
 # question 2
 
-q2_result = int(q1_result)
+q2_result = float(int(q1_result))
 
-print("{0:.5f}".format(q2_result))
+print("{0:.1f}".format(q2_result))
 print()
 
 
 # question 3
 
-q3_result = int(q1_result + 0.5)
+q3_result = float(int(q1_result + 0.5))
 
-print("{0:.5f}".format(q3_result))
+print("{0:.1f}".format(q3_result))
 print()
 
 
 # question 4
 
-abs_error = abs(q1_result - q3_result)
+abs_error = Decimal(abs((q1_result) - (q3_result)))
+
 
 print(abs_error)
 
-rel_error = abs_error / abs(q1_result)
+rel_error = (abs_error / abs(Decimal(q1_result)))
 print(rel_error)
 print()
 
@@ -104,6 +106,8 @@ while (abs(right - left) > tol and i < max):
     left = p
 print(i)
 
+print()
+
 # Determine the number of iterations necessary to solve f(x) = x^3 + 4x^2 – 10 = 0
 def fp(x):
   return 3 * pow(x, 2) + 8 * x
@@ -112,7 +116,7 @@ def fp(x):
 
 # p_prev = (7+(-4))/2
 
-p_prev = 1.5
+p_prev = -4
 p_next = 0
 
 i = 1
@@ -126,7 +130,7 @@ while (i <= max):
     p_prev = p_next
   else:
     break
-
+print()
 
 
 
